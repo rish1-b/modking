@@ -63,3 +63,36 @@ export default function ModDetail() {
 
   return (
     <div className="container">
+      <span className="tag">{mod.game_name}</span>
+      <h2>{mod.mod_name}</h2>
+      <p style={{ margin: '12px 0', color: '#c8c8cc' }}>{mod.description}</p>
+      <p className="meta">
+        ⬇ {mod.download_count || 0} downloads
+        {avgRating && ` · ⭐ ${avgRating}/5`}
+      </p>
+
+      <button className="btn" style={{ marginTop: 16 }} onClick={handleDownload}>
+        Download Mod
+      </button>
+
+      <div style={{ marginTop: 20 }}>
+        <p style={{ marginBottom: 8 }}>Rate this mod:</p>
+        {[1, 2, 3, 4, 5].map((n) => (
+          <button
+            key={n}
+            onClick={() => handleRate(n)}
+            style={{
+              background: 'none',
+              border: 'none',
+              fontSize: 22,
+              cursor: 'pointer',
+              color: '#6ee7ff',
+            }}
+          >
+            {n <= (avgRating || 0) ? '★' : '☆'}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
