@@ -28,24 +28,6 @@ export default function Login() {
     }
   }
 
-  async function handleSignup(e) {
-    e.preventDefault();
-    setError('');
-    setLoading(true);
-
-    const { error: authError } = await supabase.auth.signUp({
-      email,
-      password,
-    });
-
-    if (authError) {
-      setError(authError.message);
-    } else {
-      setError('Sign up successful! Check your email to confirm.');
-    }
-    setLoading(false);
-  }
-
   return (
     <div className="container">
       <div style={{ maxWidth: 400, margin: '60px auto' }}>
@@ -78,19 +60,20 @@ export default function Login() {
         </form>
 
         <div style={{ marginTop: 16, textAlign: 'center' }}>
-          <button
-            onClick={handleSignup}
-            disabled={loading}
-            style={{
-              background: 'none',
-              border: 'none',
-              color: '#6ee7ff',
-              cursor: 'pointer',
-              textDecoration: 'underline',
-            }}
-          >
-            Sign up instead
-          </button>
+          <Link href="/signup">
+            <button
+              disabled={loading}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: '#6ee7ff',
+                cursor: 'pointer',
+                textDecoration: 'underline',
+              }}
+            >
+              Sign up instead
+            </button>
+          </Link>
         </div>
 
         <div style={{ marginTop: 24, textAlign: 'center' }}>
