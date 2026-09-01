@@ -55,7 +55,10 @@ export default function Home() {
   return (
     <div>
       <nav className="navbar">
-        <div className="logo">MODKING</div>
+        <div className="logo">
+          <span className="logo-badge">⚔</span>
+          mod<span className="accent">king</span>
+        </div>
         <div style={{ display: 'flex', gap: '12px', alignItems: 'center' }}>
           <Link href="/upload">
             <button className="btn">Upload Mod</button>
